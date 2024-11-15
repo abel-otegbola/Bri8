@@ -1,6 +1,68 @@
 export const gadgets = [
     {
-        id: "1",
+      id: "0",
+      title: "iPhone 15 Pro Max",
+      price: "1199",
+      slug: "iphone-15-pro-max",
+      description: "The iPhone 15 Pro Max features a titanium design, the powerful A17 Pro chip, and a cutting-edge camera system.",
+      tags: ["smartphone", "Apple", "iOS", "5G"],
+      category: "smartphones",
+      stocks: 150,
+      images: [
+        "/iphone5.png",
+        "/iphone5.png",
+      ],
+      variations: {
+        colors: [
+          { name: "Titanium Black", img: "/iphone5.png" },
+          { name: "Titanium Blue", img: "iphone5.png" },
+        ],
+        size: [
+          { name: "128GB", img: "" },
+          { name: "256GB", img: "" },
+        ],
+      },
+      offers: [
+        { name: "Free Shipping", code: "FREESHIP" },
+        { name: "10% Off for Students", code: "STUDENT10" },
+      ],
+      createdAt: "2024-11-14T10:00:00Z",
+      updatedAt: "2024-11-14T10:00:00Z",
+      rating: 4.8,
+    },
+    {
+      id: "1",
+      title: "MacBook Pro 16-inch (M2 Max)",
+      price: "3499",
+      slug: "macbook-pro-16-m2-max",
+      description: "The MacBook Pro 16-inch with the M2 Max chip offers unparalleled performance for creative professionals.",
+      tags: ["laptop", "Apple", "macOS", "Pro"],
+      category: "laptops",
+      stocks: 80,
+      images: [
+        "/macbook.png",
+        "/macbook.png",
+      ],
+      variations: {
+        colors: [
+          { name: "Space Gray", img: "/macbook.png" },
+          { name: "Silver", img: "/macbook.png" },
+        ],
+        size: [
+          { name: "1TB", img: "" },
+          { name: "2TB", img: "" },
+        ],
+      },
+      offers: [
+        { name: "Free AppleCare for 1 Year", code: "APPLECARE1" },
+        { name: "15% Off for Educators", code: "EDU15" },
+      ],
+      createdAt: "2024-11-14T10:00:00Z",
+      updatedAt: "2024-11-14T10:00:00Z",
+      rating: 4.9,
+    },  
+    {
+        id: "2",
         title: "Wireless Noise-Cancelling Headphones",
         price: "299.99",
         slug: "wireless-noise-cancelling-headphones",
@@ -27,7 +89,7 @@ export const gadgets = [
         rating: 4.5
     },
     {
-        id: "2",
+        id: "3",
         title: "Smart Fitness Watch",
         price: "149.99",
         slug: "smart-fitness-watch",
@@ -54,7 +116,7 @@ export const gadgets = [
         rating: 4.3
     },
     {
-        id: "3",
+        id: "4",
         title: "Portable Bluetooth Speaker",
         price: "79.99",
         slug: "portable-bluetooth-speaker",
@@ -81,7 +143,7 @@ export const gadgets = [
         rating: 4.7
     },
     {
-        id: "4",
+        id: "5",
         title: "4K Action Camera",
         price: "199.99",
         slug: "4k-action-camera",
@@ -107,7 +169,7 @@ export const gadgets = [
         rating: 4.6
     },
     {
-        id: "5",
+        id: "6",
         title: "Wireless Charging Pad",
         price: "29.99",
         slug: "wireless-charging-pad",
@@ -132,7 +194,7 @@ export const gadgets = [
         rating: 4.2
     },
     {
-        id: "6",
+        id: "7",
         title: "Smart Home Hub",
         price: "129.99",
         slug: "smart-home-hub",
