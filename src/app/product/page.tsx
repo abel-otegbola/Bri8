@@ -6,10 +6,10 @@ import { storeContext } from "@/context/useStore"
 import { useSearchParams } from "next/navigation"
 import { ICart, IProduct } from "@/interface/store"
 import Skeleton from "@/components/skeleton/skeleton"
-import Image from "next/image"
 import ProductCard from "@/components/cards/productCard"
 import { gadgets } from "@/data/products"
 import { currencyFormatter } from "@/helpers/currencyFormatter"
+import Slider from "@/components/slider/slider"
 
 export default function Product() {
     const searchParams = useSearchParams()
@@ -29,7 +29,7 @@ export default function Product() {
 
     useEffect(() => {
         setLoading(true)
-        setProduct(gadgets.filter(item => item.id !== id)[0])
+        setProduct(gadgets.filter(item => item.id === id)[0])
         setLoading(false)
     }, [id])
 
@@ -62,17 +62,13 @@ export default function Product() {
                     <div key={id}>
                         <div className="relative flex flex-wrap my-2 rounded">
                             <div className="relative h-full md:w-[40%] w-full">
-                                {
-                                    product?.images.map((img: string, i: number) => (
-                                        <div className={`each-slide-effect relative flex items-center justify-center`} key={i}>
-                                            <Image src={img} width={400} height={500} alt={img}  />
-                                        </div>
-                                    ))
-                                }
+                                <Slider images={product?.images.map((img: string, i: number) => (
+                                    { id: i.toString(), src: img }
+                                )) || []} />
                             </div>
                             <div className="md:px-[3%] md:py-0 py-6 md:w-[60%] w-full">
                                 <div className="flex justify-between items-center gap-6">
-                                    <h2 className="py-2 text-[32px] font-medium uppercase">{product?.title}</h2>
+                                    <h2 className="py-2 md:text-[32px] text-[24px] font-medium uppercase">{product?.title}</h2>
                                     <div>
                                         {
                                             wishlist.indexOf(id || "") === -1 ? 
@@ -89,7 +85,7 @@ export default function Product() {
                                 </div>
 
                                 <div className="flex gap-2 text-[10px] items-center">
-                                    TAGS: {product?.tags.map(tag => <span className="px-2 py-1 border border-gray-500/[0.08] rounded-[20px]" key={tag}>{tag}</span>) }
+                                    TAGS: {product?.tags.map(tag => <span className="px-3 py-1 border border-gray-500/[0.08] rounded-[20px]" key={tag}>{tag}</span>) }
                                 </div>
                                 <p className="py-4">CATEGORY: {product?.category}</p>
 

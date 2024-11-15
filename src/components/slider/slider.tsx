@@ -3,15 +3,10 @@ import { useEffect, useState } from "react"
 import Button from "../button/button"
 import { CaretLeft, CaretRight } from "@phosphor-icons/react"
 
-export default function Slider() {
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [isHovered, setIsHovered] = useState<boolean>(false);
+type images = {images: { id: string, src: string }[]}
 
-    const images = [
-        { id: 0, src: "/bg1.png" },
-        { id: 1, src: "/bg3-new.png" },
-        { id: 2, src: "/bg2.png" },
-    ]
+export default function Slider({ images }: images) {
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
 
     const states = [
         "w-[6%] left-0 scale-75 bg-left",
@@ -30,28 +25,15 @@ export default function Slider() {
     };
 
     useEffect(() => {
-        // Start interval for automatic slide change if not hovered
-        if (!isHovered) {
           const interval = setInterval(() => {
             nextSlide();
           }, 3000);
-    
-          // Cleanup the interval on component unmount
           return () => {
             clearInterval(interval);
           };
-        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isHovered]);
+    }, []);
 
-    const handleMouseOver = (): void => {
-        setIsHovered(true);
-    };
-    
-    const handleMouseLeave = (): void => {
-        setIsHovered(false);
-    };
-    
     return (
         <div className="relative flex items-center justify-center md:w-[86%] w-[94%] mx-auto mt-4 overflow-hidden">
             <div className="flex gap-[3%] md:h-[460px] h-[300px]">
@@ -62,8 +44,6 @@ export default function Slider() {
                 </div>
                 <div
                     className={`absolute top-0 md:h-[400px] h-[230px] ${states[currentIndex === 2 ? 0 : currentIndex + 1]} duration-700 rounded-[20px] bg-cover bg-center bg-no-repeat transition-all ease-in-out cursor-pointer`}
-                    onMouseOver={handleMouseOver}
-                    onMouseLeave={handleMouseLeave}
                     style={{ backgroundImage: `url("${images[1]?.src}")` }}
                 >
                 </div>

@@ -9,7 +9,11 @@ export default function Home() {
   return (
     <main>
 
-      <Slider />
+      <Slider images={[
+        { id: "0", src: "/bg1.png" },
+        { id: "1", src: "/bg3-new.png" },
+        { id: "2", src: "/bg2.png" }
+      ]} />
 
       <section className="md:px-[8%] px-4 py-[20px]">
         <h1 className="md:text-[64px] w-[70%] text-[32px] font-bold py-6">HIGH QUALITY GADGETS</h1>
@@ -32,8 +36,8 @@ export default function Home() {
       </section>
 
       <section className="md:p-[8%] p-4 py-[20px]">
-          <div className="md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg4.png')] bg-cover bg-top">
-
+          <div className="flex flex-wrap justify-center p-[30px] items-end md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg4.png')] bg-cover bg-top">
+            <h2 className="md:text-[18px] text-white md:w-[30%] w-[70%] backdrop-blur-lg p-8 rounded-[20px] text-center border border-gray-500/[0.2]">Design Your Dream Workspace with our Stunning Gadgets</h2>
           </div>
       </section>
 
