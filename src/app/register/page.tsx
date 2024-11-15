@@ -1,12 +1,15 @@
 'use client'
 import Button from "@/components/button/button";
 import Input from "@/components/input/input";
+import { AuthContext } from "@/context/useAuth";
 import { registerSchema } from "@/schema/auth";
 import { Envelope, LockKey, Spinner, UserCircle } from "@phosphor-icons/react";
 import { Formik } from "formik";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function Registerpage() {
+    const { signUp, loading } = useContext(AuthContext)
 
     
     return (
@@ -25,7 +28,7 @@ export default function Registerpage() {
                             initialValues={{ fullname: '', email: '', password: ''}}
                             validationSchema={registerSchema}
                             onSubmit={( values, { setSubmitting }) => {
-                                // signIn(values.email, values.password);
+                                signUp({email: values.email, password: values.password}, "/dashbaord");
                                 setSubmitting(false);
                             }}
                             >
@@ -46,7 +49,7 @@ export default function Registerpage() {
 
                                     <Input name="password" label="" value={values.password} onChange={handleChange} type={"password"} error={touched.password ? errors.password : ""} placeholder="Password" leftIcon={<LockKey size={16}/>}/>
 
-                                    <Button size="full" className="">{ isSubmitting ? <Spinner size={16} className="animate-spin" /> : "Login"}</Button>
+                                    <Button size="full" type="submit" className="">{ isSubmitting || loading ? <Spinner size={16} className="animate-spin" /> : "Login"}</Button>
 
                                 </form>
                             )}

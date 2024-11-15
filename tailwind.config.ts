@@ -10,10 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "primary": "#604280",
-        "secondary": "#999",
-        "tetiary": "#333",
-        "dark": "#010101",
+        "primary": "#9B7EBD",
+        "secondary": "#D4BEE4",
+        "tetiary": "#EEEEEE",
+        "dark": "#3D3346",
+        "black": "#161620",
+        "blue": "#1e2e47"
       },
       boxShadow: {
         "input-active" : "0px 0px 12px 0px #633CFF40"

@@ -2,13 +2,15 @@
 import GoogleIcon from "@/assets/icons/google";
 import Button from "@/components/button/button";
 import Input from "@/components/input/input";
+import { AuthContext } from "@/context/useAuth";
 import { loginSchema } from "@/schema/auth";
 import { Envelope, LockKey, Spinner } from "@phosphor-icons/react";
 import { Formik } from "formik";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function Loginpage() {
-
+    const { signIn, socialSignIn, loading } = useContext(AuthContext)
     
     return (
         <div className="min-h-[400px] flex mt-4 md:mx-[12%] sm:items-center justify-between">
@@ -22,7 +24,7 @@ export default function Loginpage() {
                             <p className="mt-2 mb-3 text-center">Add your details below to get back into the app</p>
                         </div>
 
-                        <Button size="full" variant="tetiary" onClick={() => {}} className=""><GoogleIcon width={20} /></Button>
+                        <Button size="full" variant="tetiary" onClick={() => socialSignIn("Google")} className=""><GoogleIcon width={20} /></Button>
 
                         <p>OR</p>
 
@@ -30,7 +32,7 @@ export default function Loginpage() {
                             initialValues={{ email: '', password: ''}}
                             validationSchema={loginSchema}
                             onSubmit={( values, { setSubmitting }) => {
-                                // signIn(values.email, values.password);
+                                signIn(values.email, values.password, "/dashboard");
                                 setSubmitting(false);
                             }}
                             >
@@ -49,7 +51,7 @@ export default function Loginpage() {
 
                                     <Input name="password" label="" value={values.password} onChange={handleChange} type={"password"} error={touched.password ? errors.password : ""} placeholder="Password" leftIcon={<LockKey size={16}/>}/>
 
-                                    <Button size="full" className="">{ isSubmitting ? <Spinner size={16} className="animate-spin" /> : "Login"}</Button>
+                                    <Button size="full" type="submit" className="">{ isSubmitting || loading ? <Spinner size={16} className="animate-spin" /> : "Login"}</Button>
 
                                 </form>
                             )}
