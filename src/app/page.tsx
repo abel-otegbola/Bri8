@@ -14,17 +14,17 @@ export default function Home() {
       <section className="md:px-[8%] px-4 py-[20px]">
         <h1 className="md:text-[64px] w-[70%] text-[32px] font-bold py-6">HIGH QUALITY GADGETS</h1>
 
-        <div className="columns-2 gap-6">
-          <div className="md:h-[350px] h-[250px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/iphone5.png')] bg-cover bg-center">
+        <div className="md:columns-3 columns-2 gap-6">
+          <div className="md:h-[400px] h-[250px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/iphone5.png')] bg-cover bg-center">
 
           </div>
-          <div className="md:h-[350px] h-[250px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/macbook.png')] bg-cover bg-center">
+          <div className="md:h-[600px] h-[300px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/Smartwatch-new.png')] bg-cover bg-center">
 
           </div>
-          <div className="md:h-[400px] h-[300px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/Smartwatch-new.png')] bg-cover bg-center">
+          <div className="md:h-[250px] h-[200px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/powerbank.png')] bg-cover bg-center">
 
           </div>
-          <div className="md:h-[300px] h-[200px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/powerbank.png')] bg-cover bg-center">
+          <div className="md:h-[350px] h-[350px] rounded-[20px] mb-6 bg-slate-200 break-inside-avoid bg-[url('/macbook.png')] bg-cover bg-center">
 
           </div>
         </div>
@@ -32,7 +32,7 @@ export default function Home() {
       </section>
 
       <section className="md:p-[8%] p-4 py-[20px]">
-          <div className="md:h-[350px] h-[250px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg1.png')] bg-cover bg-top">
+          <div className="md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg4.png')] bg-cover bg-top">
 
           </div>
       </section>

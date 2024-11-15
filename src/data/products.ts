@@ -9,13 +9,13 @@ export const gadgets = [
         category: "Audio",
         stocks: 120,
         images: [
-            "/headphones1.jpg",
-            "/headphones2.jpg"
+            "/headphone1.png",
+            "/headphone2.png"
         ],
         variations: {
             colors: [
-                { name: "Black", img: "/headphones-black.jpg" },
-                { name: "Silver", img: "/headphones-silver.jpg" }
+                { name: "Black", img: "/headphone1.png" },
+                { name: "White", img: "/headphone2.png" }
             ],
             size: []
         },
@@ -63,13 +63,13 @@ export const gadgets = [
         category: "Audio",
         stocks: 180,
         images: [
-            "/speaker1.jpg",
-            "/speaker2.jpg"
+            "/speaker1.png",
+            "/speaker1.png"
         ],
         variations: {
             colors: [
-                { name: "Red", img: "/speaker-red.jpg" },
-                { name: "Blue", img: "/speaker-blue.jpg" }
+                { name: "Red", img: "/speaker1.png" },
+                { name: "Blue", img: "/speaker1.png" }
             ],
             size: []
         },
@@ -90,12 +90,12 @@ export const gadgets = [
         category: "Cameras",
         stocks: 90,
         images: [
-            "/camera1.jpg",
-            "/camera2.jpg"
+            "/camera1.png",
+            "/camera2.png"
         ],
         variations: {
             colors: [
-                { name: "Black", img: "/camera-black.jpg" }
+                { name: "Black", img: "/camera1.png" }
             ],
             size: []
         },
@@ -116,13 +116,11 @@ export const gadgets = [
         category: "Accessories",
         stocks: 300,
         images: [
-            "/chargingpad1.jpg",
-            "/chargingpad2.jpg"
+            "/chargingpad1.png",
         ],
         variations: {
             colors: [
-                { name: "White", img: "/chargingpad-white.jpg" },
-                { name: "Black", img: "/chargingpad-black.jpg" }
+                { name: "Black", img: "/chargingpad1.png" }
             ],
             size: []
         },
@@ -143,8 +141,7 @@ export const gadgets = [
         category: "Smart Home",
         stocks: 150,
         images: [
-            "/smarthub1.jpg",
-            "/smarthub2.jpg"
+            "/smarthub1.png",
         ],
         variations: {
             colors: [
