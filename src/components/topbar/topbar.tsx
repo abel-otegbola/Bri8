@@ -40,7 +40,7 @@ function Topbar() {
     return (
         <div className="flex py-2 pt-4 md:px-[8%] px-6 justify-between items-center">
             <div className="md:w-[17%]">
-                <Link href="/" className="w-[32px] h-[20px] rounded flex justify-center items-center font-bold">
+                <Link href="/" className="w-[70px] h-[30px] rounded flex justify-center items-center font-bold">
                     <LogoIcon />
                 </Link>
             </div>
