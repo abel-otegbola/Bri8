@@ -35,9 +35,9 @@ export default function Home() {
 
       </section>
 
-      <section className="md:p-[8%] p-4 py-[20px]">
-          <div className="flex flex-wrap justify-center p-[30px] items-end md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg4.png')] bg-cover bg-top">
-            <h2 className="md:text-[18px] text-white md:w-[30%] w-[70%] backdrop-blur-lg p-8 rounded-[20px] text-center border border-gray-500/[0.2]">Design Your Dream Workspace with our Stunning Gadgets</h2>
+      <section className="md:p-[8%] p-4 mb-[60px] py-[20px]">
+          <div className="flex flex-wrap justify-center items-end md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg4.png')] bg-cover bg-top">
+            <h2 className="md:w-[30%] w-[70%] -mb-[30px] backdrop-blur-sm bg-white/[0.8] dark:bg-dark/[0.8] p-4 px-8 rounded-lg text-center">Design Your Dream Workspace with our Stunning Gadgets</h2>
           </div>
       </section>
 

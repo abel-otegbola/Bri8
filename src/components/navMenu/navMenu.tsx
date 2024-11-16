@@ -1,8 +1,9 @@
 'use client'
 
+import { AuthContext } from "@/context/useAuth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 
 type MenuProps = { 
     close: (aug0: boolean) => void; 
@@ -11,15 +12,16 @@ type MenuProps = {
 
 export default function Menu ({ close, list }: MenuProps) {
     const pathname = usePathname()
+    const { logOut } = useContext(AuthContext)
 
     return (
-        <div className="flex flex-col gap-2 p-2 w-[150px] rounded shadow-md border border-gray/[0.3] dark:border-gray/[0.06] absolute top-12 right-0 bg-white dark:bg-dark dark:text-gray">
+        <div className="flex flex-col gap-2 p-2 w-[150px] rounded shadow-md border border-gray/[0.3] dark:border-gray/[0.06] absolute top-12 right-0 bg-white dark:bg-dark dark:text-gray z-[10]">
             { 
                 list.map(item => (
                     <Link
                         key={item.id}
                         href={item.href}
-                        onClick={() => close(false)}
+                        onClick={() => item.title === "Logout" ? logOut() : close(false)}
                         className={`flex items-center gap-2 h-[32px] p-[8px] hover:text-primary font-semibold rounded-[4px]
                             ${pathname === item.href ? "bg-tetiary dark:bg-gray/[0.08] text-primary" : ""}
                         `}
