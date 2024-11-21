@@ -1,3 +1,4 @@
+'use client'
 import { TbListDetails, TbTrash } from "react-icons/tb"
 import { PiCheckCircle, PiCurrencyNgn } from "react-icons/pi"
 import { useContext, useEffect, useState } from "react"

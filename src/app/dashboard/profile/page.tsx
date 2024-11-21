@@ -22,13 +22,13 @@ export default function Profile() {
                         <div className="py-2 mb-1">
                             <div className="flex flex-col gap-2">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
-                                <Input defaultValue={user.displayName || ""} />
+                                <Input defaultValue={user?.displayName || ""} />
                             </div>
                         </div>
                         <div className="py-2 mb-4">
                             <div className="flex flex-col gap-2">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
-                                <Input defaultValue={user.email || ""} />
+                                <Input defaultValue={user?.email || ""} />
                             </div>
                         </div>
                         <Button>Save changes</Button>
