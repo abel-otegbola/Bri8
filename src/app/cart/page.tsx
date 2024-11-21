@@ -14,9 +14,13 @@ export default function CartPage() {
     return (    
         <div className="flex flex-col gap-6">
 
-            <h1 className="text-[24px] font-bold text-center py-12 my-2 bg-slate-100">MY CART</h1>
+            <div className="items-center md:px-[8%] px-6 mt-2 py-8 bg-slate-100 dark:bg-dark">
+                <h2 className="font-bold text-[28px] uppercase">My Cart</h2>
+                <p>Manage your cart ({cart.length} items)</p>
+            </div>
 
-            <div className="flex flex-wrap gap-6 md:px-[8%] px-4">
+
+            <div className="flex flex-wrap gap-6 md:px-[8%] px-6 py-4">
                 <div className="lg:w-[60%] flex flex-col gap-2">
                 {   
                     cart.length === 0 ?
