@@ -9,6 +9,7 @@ import Search from "../search/search"
 import { AuthContext } from "@/context/useAuth"
 import Avatar from "../avatar/avatar"
 import Menu from "../navMenu/navMenu"
+import { usePathname } from "next/navigation"
 
 type navTab =  {
     id: number | string,
@@ -20,6 +21,7 @@ type navTab =  {
 function Topbar() {
     const { user } = useContext(AuthContext)
     const [open, setOpen] = useState(false)
+    const pathname = usePathname()
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -33,12 +35,13 @@ function Topbar() {
         { id: 0, label: "Shop", to: "/", icon: <Storefront/> },
         { id: 1, label: "Cart", to: "/cart", icon: <ShoppingCart/> },
         { id: 2, label: "Wishlist", to: "/wishlist", icon: <Heart/> },
-        { id: 3, label: "Account", to: "/account", icon: <UserCircle/> },
+        { id: 3, label: "Account", to: "/dashboard", icon: <UserCircle/> },
     ]
     
+    const accountPages = ["dashboard", "admin", "agent"]
 
     return (
-        <div className="flex py-2 pt-4 md:px-[8%] px-6 justify-between items-center">
+        <div className={`flex py-2 pt-4 px-6 justify-between items-center ${accountPages.includes(pathname.split("/")[1]) ? "md:px-10" : "md:px-[8%]"}`}>
             <div className="md:w-[17%]">
                 <Link href="/" className="w-[70px] h-[30px] rounded flex justify-center items-center font-bold">
                     <LogoIcon />
