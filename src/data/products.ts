@@ -10,7 +10,7 @@ export const gadgets = [
       stocks: 150,
       images: [
         "/iphone5.png",
-        "/iphone5.png",
+        "/macbook.png",
       ],
       variations: {
         colors: [
@@ -72,7 +72,8 @@ export const gadgets = [
         stocks: 120,
         images: [
             "/headphone1.png",
-            "/headphone2.png"
+            "/headphone2.png",
+            "/headphone2.png",
         ],
         variations: {
             colors: [

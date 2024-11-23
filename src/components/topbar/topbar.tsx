@@ -34,7 +34,7 @@ function Topbar() {
     })
 
     const navTabs: navTab[] = [
-        { id: 0, label: "Shop", to: "/", icon: <Storefront/> },
+        { id: 0, label: "Shop", to: "/shop", icon: <Storefront/> },
         { id: 1, label: "Cart", to: "/cart", icon: <ShoppingCart/> },
         { id: 2, label: "Wishlist", to: "/wishlist", icon: <Heart/> },
         { id: 3, label: "Account", to: "/dashboard", icon: <UserCircle/> },

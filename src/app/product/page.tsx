@@ -56,15 +56,15 @@ export default function Product() {
 
 
     return (
-        <div className="md:px-[8%] px-[3%] py-[50px]">
+        <div className="md:px-[8%] px-[3%] md:py-[50px] py-[20px]">
             {
                 loading ? <Skeleton type="rectangle" /> :
                     <div key={id}>
                         <div className="relative flex flex-wrap my-2 rounded">
                             <div className="relative h-full md:w-[40%] w-full">
-                                <Slider images={product?.images.map((img: string, i: number) => (
-                                    { id: i.toString(), src: img }
-                                )) || []} />
+                                <Slider images={product?.images?.map((img: string, i: number) => (
+                                    { id: i, src: img }
+                                ))  || [ { id: 0, src: "/bg1.png" } ]} />
                             </div>
                             <div className="md:px-[3%] md:py-0 py-6 md:w-[60%] w-full">
                                 <div className="flex justify-between items-center gap-6">
@@ -85,7 +85,7 @@ export default function Product() {
                                 </div>
 
                                 <div className="flex gap-2 text-[10px] items-center">
-                                    TAGS: {product?.tags.map(tag => <span className="px-3 py-1 border border-gray-500/[0.08] rounded-[20px]" key={tag}>{tag}</span>) }
+                                    TAGS: {product?.tags?.map(tag => <span className="px-3 py-1 border border-gray-500/[0.08] rounded-[20px]" key={tag}>{tag}</span>) }
                                 </div>
                                 <p className="py-4">CATEGORY: {product?.category}</p>
 
@@ -97,7 +97,7 @@ export default function Product() {
                                         <p>Colors</p>
                                         <div className="flex items-center gap-4 mt-4">
                                             {
-                                                product?.variations.colors.map((item: { name: string, img: string }, i: number) => (
+                                                product?.variations.colors?.map((item: { name: string, img: string }, i: number) => (
                                                     <button 
                                                         key={i} 
                                                         style={{ backgroundColor: item.name }} 
@@ -113,7 +113,7 @@ export default function Product() {
                                         <p>Size</p>
                                         <div className="grid grid-cols-5 items-center gap-4 mt-4">
                                             {
-                                                product?.variations.size.map((item: { name: string, img: string }, i: number) => (
+                                                product?.variations.size?.map((item: { name: string, img: string }, i: number) => (
                                                     <button 
                                                         key={i} 
                                                         className={`p-[1px] w-full px-2 rounded ${size === item.name ? "bg-primary" : "border border-gray-500/[0.4]"}`} 

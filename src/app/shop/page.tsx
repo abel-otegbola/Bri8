@@ -37,7 +37,7 @@ function Shop()  {
                 <h2 className="font-bold text-[28px] uppercase">Shop</h2>
                 <p>Find and buy gadgets</p>
             </div>
-            <div className={`relative dark:text-white md:px-[8%] md:mt-8 mb-8 md:flex gap-10`}>
+            <div className={`relative dark:text-white md:px-[8%] mt-8 mb-8 md:flex gap-10`}>
                 <div className="md:w-[30%] sticky top-[50px] left-0 h-full w-full bg-white dark:bg-black md:block hidden rounded text-[12px]">
                     
                     <div className="w-full p-4 border border-gray-500/[0.1] rounded-[10px]">
