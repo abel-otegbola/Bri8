@@ -14,7 +14,7 @@ export default function CartPage() {
     return (    
         <div className="flex flex-col gap-6">
 
-            <div className="items-center md:px-[8%] px-6 mt-2 py-8 bg-slate-100 dark:bg-dark">
+            <div className="flex flex-col items-center md:px-[8%] px-6 mt-2 py-12 bg-slate-100 dark:bg-dark">
                 <h2 className="font-bold text-[28px] uppercase">My Cart</h2>
                 <p>Manage your cart ({cart.length} items)</p>
             </div>
