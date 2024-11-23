@@ -5,11 +5,12 @@ import Link from "next/link"
 import { Bell, Gear, Heart, ShoppingCart, SignOut, Storefront, User, UserCircle } from "@phosphor-icons/react"
 import Button from "../button/button"
 import LogoIcon from "@/assets/icons/logo"
-import Search from "../search/search"
 import { AuthContext } from "@/context/useAuth"
 import Avatar from "../avatar/avatar"
 import Menu from "../navMenu/navMenu"
 import { usePathname } from "next/navigation"
+import Search from "../search/search"
+import { storeContext } from "@/context/useStore"
 
 type navTab =  {
     id: number | string,
@@ -20,6 +21,7 @@ type navTab =  {
 
 function Topbar() {
     const { user } = useContext(AuthContext)
+    const { cart } = useContext(storeContext)
     const [open, setOpen] = useState(false)
     const pathname = usePathname()
 
@@ -48,7 +50,7 @@ function Topbar() {
                 </Link>
             </div>
 
-            <nav className="flex justify-between md:static p-4 bg-white/[0.9] dark:bg-black/[0.9] backdrop-blur-sm fixed bottom-2 left-[4%] md:w-fit w-[92%] mx-auto rounded-lg md:border-none border border-gray-500/[0.1] items-center gap-4 z-[10]">
+            <nav className="flex justify-between md:static p-4 bg-white/[0.9] dark:bg-black/[0.9] backdrop-blur-sm fixed bottom-0 left-0 md:w-fit w-full rounded-lg md:border-none border border-gray-500/[0.1] items-center gap-4 z-[10]">
                 {
                     navTabs.map((tab: navTab) => (
                         <Tab key={tab.id} label={tab.label} href={tab.to} icon={tab.icon} />
@@ -61,8 +63,9 @@ function Topbar() {
                 <Link href="/inbox">
                     <Bell weight="light" size={20}/>
                 </Link>
-                <Link href="/cart" className="md:block hidden">
+                <Link href="/cart" className="relative">
                     <ShoppingCart weight="light" size={20}/>
+                    <span className="absolute text-[8px] -top-2 -right-2 px-1 py-0 rounded-full bg-green-600 text-white">{cart.length}</span>
                 </Link>
                 {
                     user ?

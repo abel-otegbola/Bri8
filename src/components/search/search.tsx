@@ -16,7 +16,7 @@ export default function Search({ value, onChange, className, disabled, placehold
     const [focus, setFocus] = useState(false)
 
     return (
-        <div className="relative flex flex-col w-full gap-1">
+        <form action={`/search`} className="relative flex flex-col w-full gap-1">
 
             <div className={`flex items-center gap-1 relative rounded-full bg-white dark:bg-primary/[0.04] dark:text-gray w-full p-1 px-4 border duration-500 
                 ${focus ? "border-primary shadow-input-active" : "border-black/[0.2] "}
@@ -29,12 +29,14 @@ export default function Search({ value, onChange, className, disabled, placehold
                         ${disabled ? "opacity-[0.25]" : ""}
                     `}
                     value={value}
+                    name="search"
+                    type="search"
                     placeholder={placeholder}
                     onFocus={() => setFocus(true)}
                     onBlur={() => setFocus(false)}
                     onChange={(e) => onChange ? onChange(e.target.value): ""}
                 />
             </div>
-        </div>
+        </form>
     )
 }
