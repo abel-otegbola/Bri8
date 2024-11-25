@@ -154,7 +154,6 @@ export const gadgets = [
         stocks: 90,
         images: [
             "/camera1.png",
-            "/camera2.png"
         ],
         variations: {
             colors: [

@@ -18,7 +18,7 @@ export default function Slider({ images }: ImagesProps) {
     ] : [
       "w-[82%] left-[9%] scale-100 bg-center z-[2]",
       "w-[6%] left-[0%] scale-75 bg-left z-[-1]",
-  ]
+    ]
 
     const prevSlide = (): void => {
         setCurrentIndex(
@@ -32,7 +32,9 @@ export default function Slider({ images }: ImagesProps) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            nextSlide();
+            if(images.length > 1) {
+                nextSlide();
+            }
         }, 3000);
         return () => {
             clearInterval(interval);
@@ -61,9 +63,9 @@ export default function Slider({ images }: ImagesProps) {
         if (dragStartX !== null && dragEndX !== null) {
           const dragDistance = dragEndX - dragStartX;
           if (dragDistance > 50) {
-              prevSlide();
-          } else if (dragDistance < -50) {
               nextSlide();
+          } else if (dragDistance < -50) {
+              prevSlide();
           }
         }
         setDragStartX(null);
@@ -92,7 +94,7 @@ export default function Slider({ images }: ImagesProps) {
                 images.length === 1 ?
                   <div
                       key={images[0]?.id}
-                      className={`absolute top-0 md:h-[400px] h-[230px] ${states[1]} duration-700 rounded-[20px] bg-cover bg-center bg-no-repeat transition-all ease-in-out cursor-pointer`}
+                      className={`absolute top-0 md:h-[400px] h-[230px] ${states[0]} duration-700 rounded-[20px] bg-cover bg-center bg-no-repeat transition-all ease-in-out cursor-pointer`}
                       style={{
                           backgroundImage: `url("${images[0]?.src}")`,
                       }}

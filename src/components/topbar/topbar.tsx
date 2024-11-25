@@ -50,7 +50,7 @@ function Topbar() {
                 </Link>
             </div>
 
-            <nav className="flex justify-between md:static p-4 bg-white/[0.9] dark:bg-black/[0.9] backdrop-blur-sm fixed bottom-0 left-0 md:w-fit w-full rounded-lg md:border-none border border-gray-500/[0.1] items-center gap-4 z-[10]">
+            <nav className="flex justify-between md:static p-4 bg-white/[0.9] dark:bg-black/[0.9] backdrop-blur-sm fixed bottom-0 left-0 md:w-fit w-full md:border-none border border-gray-500/[0.1] items-center gap-4 z-[10]">
                 {
                     navTabs.map((tab: navTab) => (
                         <Tab key={tab.id} label={tab.label} href={tab.to} icon={tab.icon} />

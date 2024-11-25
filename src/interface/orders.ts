@@ -12,3 +12,10 @@ export interface order {
     cart: ICart[],
     date: string,
 }
+export interface checkout {
+    id: string, 
+    fullname: string,
+    country: string, 
+    address: string, 
+    phone: string, 
+}

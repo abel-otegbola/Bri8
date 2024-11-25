@@ -1,7 +1,7 @@
 import { storeContext } from "@/context/useStore"
 import { currencyFormatter } from "@/helpers/currencyFormatter"
 import { ICart, IProduct } from "@/interface/store"
-import { order } from "@/schema/orders"
+import { order } from "@/interface/orders"
 import { useContext } from "react"
 
 export default function TotalPrice ({ discount, order }: { discount?: number, order?: order }) {
