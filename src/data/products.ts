@@ -29,6 +29,7 @@ export const gadgets = [
       createdAt: "2024-11-14T10:00:00Z",
       updatedAt: "2024-11-14T10:00:00Z",
       rating: 4.8,
+      store: "DA' REY"
     },
     {
       id: "1",
@@ -60,6 +61,7 @@ export const gadgets = [
       createdAt: "2024-11-14T10:00:00Z",
       updatedAt: "2024-11-14T10:00:00Z",
       rating: 4.9,
+      store: "Bri8"
     },  
     {
         id: "2",
@@ -87,7 +89,8 @@ export const gadgets = [
         ],
         createdAt: "2024-01-15",
         updatedAt: "2024-06-10",
-        rating: 4.5
+        rating: 4.5,
+        store: "DA' REY"
     },
     {
         id: "3",
@@ -114,7 +117,8 @@ export const gadgets = [
         ],
         createdAt: "2023-11-05",
         updatedAt: "2024-07-21",
-        rating: 4.3
+        rating: 4.3,
+        store: "DA' REY"
     },
     {
         id: "4",
@@ -141,7 +145,8 @@ export const gadgets = [
         ],
         createdAt: "2023-09-12",
         updatedAt: "2024-03-18",
-        rating: 4.7
+        rating: 4.7,
+        store: "Bri8"
     },
     {
         id: "5",
@@ -166,7 +171,8 @@ export const gadgets = [
         ],
         createdAt: "2024-02-10",
         updatedAt: "2024-08-05",
-        rating: 4.6
+        rating: 4.6,
+        store: "DA' REY"
     },
     {
         id: "6",
@@ -191,7 +197,8 @@ export const gadgets = [
         ],
         createdAt: "2023-08-22",
         updatedAt: "2024-06-30",
-        rating: 4.2
+        rating: 4.2,
+        store: "Bri8"
     },
     {
         id: "7",
@@ -217,6 +224,7 @@ export const gadgets = [
         ],
         createdAt: "2024-04-07",
         updatedAt: "2024-09-15",
-        rating: 4.8
+        rating: 4.8,
+        store: "Bri8"
     }
 ];

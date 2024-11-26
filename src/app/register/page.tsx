@@ -3,15 +3,27 @@ import Button from "@/components/button/button";
 import Input from "@/components/input/input";
 import { AuthContext } from "@/context/useAuth";
 import { registerSchema } from "@/schema/auth";
-import { Envelope, LockKey, Spinner, UserCircle } from "@phosphor-icons/react";
+import { Envelope, LockKey, Spinner, Storefront, User, UserCircle } from "@phosphor-icons/react";
 import { Formik } from "formik";
 import Link from "next/link";
-import { useContext } from "react";
+import { ReactNode, useContext, useState } from "react";
+
+type navTab =  {
+    id: number | string,
+    label: string,
+    to: string,
+    icon: ReactNode
+}
 
 export default function Registerpage() {
     const { signUp, loading } = useContext(AuthContext)
+    const [active, setActive] = useState("Buyer")
 
-    
+    const navTabs: navTab[] = [
+        { id: 1, label: "Buyer", to: "#", icon: <User/> },
+        { id: 2, label: "Seller", to: "#", icon: <Storefront/> },
+    ]
+
     return (
         <div className="min-h-[400px] flex mt-4 md:mx-[12%] sm:items-center justify-between">
 
@@ -22,6 +34,14 @@ export default function Registerpage() {
                         <div>
                             <h1 className="font-bold text-[32px] text-center">Create Your Account</h1>
                             <p className="mt-2 mb-3 text-center">Add your details below to get started</p>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4 bg-gray-500/[0.06] p-2 rounded-[12px] w-full">
+                        {
+                            navTabs.map((tab: navTab) => (
+                                <button key={tab.id} onClick={() => setActive(tab.label)} className={`${active === tab.label ? "border bg-white dark:bg-dark border-primary" : ""} flex items-center p-2 rounded-lg justify-center gap-2`}>{tab.icon}{tab.label}</button>
+                            ))
+                        }
                         </div>
 
                         <Formik
@@ -42,6 +62,7 @@ export default function Registerpage() {
                             }) => (
 
                                 <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6 ">
+
                                     
                                     <Input name="fullname" label="" value={values.fullname} onChange={handleChange} type="text" error={touched.fullname ? errors.fullname : ""} placeholder="Full name" leftIcon={<UserCircle size={16}/>}/>
 

@@ -2,8 +2,7 @@
 import { ReactNode, useContext, useEffect, useState } from "react"
 import Tab from "../tab/tab"
 import Link from "next/link"
-import { Bell, Gear, Heart, ShoppingCart, SignOut, Storefront, User, UserCircle } from "@phosphor-icons/react"
-import Button from "../button/button"
+import { Bell, Gear, Heart, ShoppingCart, SignIn, SignOut, Storefront, User, UserCircle } from "@phosphor-icons/react"
 import LogoIcon from "@/assets/icons/logo"
 import { AuthContext } from "@/context/useAuth"
 import Avatar from "../avatar/avatar"
@@ -67,25 +66,20 @@ function Topbar() {
                     <ShoppingCart weight="light" size={20}/>
                     <span className="absolute text-[8px] -top-2 -right-2 px-1 py-0 rounded-full bg-green-600 text-white">{cart.length}</span>
                 </Link>
-                {
-                    user ?
-                    <div className="relative">
-                        <button onClick={() => setOpen(!open)} className="h-[40px] w-[40px]">
-                            <Avatar user={user} />
-                        </button>
-                        {
-                            open ?
-                                <Menu close={setOpen} list={[ 
-                                    {id: "0", title: "Account", icon: <User />, href: "/dashboard"},  
-                                    {id: "1", title: "Settings", icon: <Gear />, href: "/settings"},  
-                                    {id: "2", title: "Logout", icon: <SignOut />, href: "#"},  
-                                ]} />
-                            : ""
-                        }
-                    </div>
-                    :
-                    <Button href="/login">Login</Button>
-                }
+                <div className="relative">
+                    <button onClick={() => setOpen(!open)} className="h-[40px] w-[40px]">
+                        <Avatar user={user || { displayName: "user" }} />
+                    </button>
+                    {
+                        open ?
+                            <Menu close={setOpen} list={[ 
+                                user ? {id: "0", title: "Account", icon: <User />, href: "/dashboard"}: {id: "0", title: "Start selling", icon: <Storefront />, href: "/register"},  
+                                {id: "1", title: "Settings", icon: <Gear />, href: "/settings"},  
+                                user ? {id: "2", title: "Logout", icon: <SignOut />, href: "#"} : {id: "2", title: "Login", icon: <SignIn />, href: "/login"},  
+                            ]} />
+                        : ""
+                    }
+                </div>
             </div>
         </div>
     )

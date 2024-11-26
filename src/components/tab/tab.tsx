@@ -10,7 +10,7 @@ interface tabProps extends LinkHTMLAttributes<HTMLLinkElement> {
     icon?: ReactNode;
 }
 
-export default function Tab ({ href, label, icon }: tabProps) {
+export default function Tab ({ href, label, icon, ...props }: tabProps) {
     const pathname = usePathname()
 
     return (
@@ -18,6 +18,7 @@ export default function Tab ({ href, label, icon }: tabProps) {
             href={href}
             className={`flex items-center justify-center md:flex-row flex-col md:gap-1 gap-2 h-[32px] p-[8px_16px] hover:text-primary font-light rounded-lg duration-500
                 ${pathname === href ? "text-primary" : "hover:bg-primary/[0.02]"}
+                ${props.className}
             `}
         >
             <span className={`opacity-[0.6] md:text-md md:text-[16px] duration-300 ${pathname === href ? "text-[24px]": "text-[16px]"}`}>{icon}</span>

@@ -10,7 +10,7 @@ export default function Home() {
     <main>
 
       <Slider images={[
-        { id: "0", src: "/bg1.png" },
+        { id: "0", src: "/bg3.png" },
         { id: "1", src: "/bg3-new.png" },
         { id: "2", src: "/bg2.png" }
       ]} />

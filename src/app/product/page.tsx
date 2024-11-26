@@ -10,6 +10,7 @@ import ProductCard from "@/components/cards/productCard"
 import { gadgets } from "@/data/products"
 import { currencyFormatter } from "@/helpers/currencyFormatter"
 import Slider from "@/components/slider/slider"
+import Link from "next/link"
 
 export default function Product() {
     const searchParams = useSearchParams()
@@ -56,7 +57,7 @@ export default function Product() {
 
 
     return (
-        <div className="md:px-[8%] px-[3%] md:py-[50px] py-[20px]">
+        <div className="md:px-[8%] px-6 md:py-[50px] py-[20px]">
             {
                 loading ? <Skeleton type="rectangle" /> :
                     <div key={id}>
@@ -67,25 +68,21 @@ export default function Product() {
                                 ))  || [ { id: 0, src: "/bg1.png" } ]} />
                             </div>
                             <div className="md:px-[3%] md:py-0 py-6 md:w-[60%] w-full">
+                                <h2 className="py-2 md:text-[24px] text-[18px] font-medium">{product?.title}</h2>
                                 <div className="flex justify-between items-center gap-6">
-                                    <h2 className="py-2 md:text-[32px] text-[24px] font-medium uppercase">{product?.title}</h2>
+                                    <p className="flex items-center text-[40px] font-bold py-4">{currencyFormatter(+(product?.price || 0) * 1700)}</p>
                                     <div>
                                         {
                                             wishlist.indexOf(id || "") === -1 ? 
-                                            <button className="flex items-center gap-2 animate-zoom-in  h-[40px] px-4" onClick={() => addToWishlist(id || "") }><FaHeart /></button> 
+                                            <button className="flex items-center gap-2 animate-zoom-in text-tetiary h-[40px] px-4" onClick={() => addToWishlist(id || "") }><FaHeart size={20}/></button> 
                                             : 
-                                            <button className="flex items-center gap-2 animate-zoom-in h-[40px] px-4 text-red-500" onClick={() => removeFromWishlist(id || "")}><FaHeart /></button> 
+                                            <button className="flex items-center gap-2 animate-zoom-in h-[40px] px-4 text-red-500" onClick={() => removeFromWishlist(id || "")}><FaHeart size={20}/></button> 
                                         }
                                     </div>
                                 </div>
 
-                                <div className="flex items-center justify-between gap-2 uppercase">
-                                    <p className="flex items-center text-[40px] font-bold py-4">{currencyFormatter(+(product?.price || 0) * 1700)}</p>
-                                    
-                                </div>
-
-                                <div className="flex gap-2 text-[10px] items-center">
-                                    TAGS: {product?.tags?.map(tag => <span className="px-3 py-1 border border-gray-500/[0.08] rounded-[20px]" key={tag}>{tag}</span>) }
+                                <div className="flex gap-2 items-center">
+                                    TAGS: {product?.tags?.map(tag => <span className="px-3 py-1 text-[10px] border border-gray-500/[0.08] rounded-[20px]" key={tag}>{tag}</span>) }
                                 </div>
                                 <p className="py-4">CATEGORY: {product?.category}</p>
 
@@ -134,7 +131,7 @@ export default function Product() {
                                     <div className="text-[14px] sm:px-0 py-4 bg-white dark:bg-black w-full sm:z-0 z-[20]">
                                     {
                                         cart.map((item: ICart) => item.id).indexOf(id || "") === -1 ? 
-                                        <Button className="" onClick={() => addToCart({id: id ||  "0", quantity: 1, variation: { color: "black", size: "LG" }}) }>Add to Cart</Button> 
+                                        <Button className="w-full" onClick={() => addToCart({id: id ||  "0", quantity: 1, variation: { color: "black", size: "LG" }}) }>Add to Cart</Button> 
                                         : 
                                         <div className="flex flex-wrap gap-6">
                                             <Button variant="tetiary" onClick={() => removeFromCart(id || "")}>Remove from Cart</Button>
@@ -154,9 +151,10 @@ export default function Product() {
                             </div>
                         </div> 
                         <div className="mt-4">
-                            <div className="flex gap-4 items-center border border-transparent border-b-gray-500/[0.2] mb-4">
-                                <button className={`px-6 py-1 ${active === "descriptions" ? "border border-transparent border-b-primary text-primary": ""}`} onClick={() => setActive("descriptions")}>Product Descriptions</button>
-                                <button className={`px-6 py-1 ${active === "reviews" ? "border border-transparent border-b-primary text-primary": ""}`} onClick={() => setActive("reviews")}>Product Reviews</button>
+                            <div className="flex gap-6 items-center border border-transparent border-b-gray-500/[0.2] mb-4">
+                                <button className={`py-2 ${active === "descriptions" ? "border border-transparent border-b-primary text-primary": ""}`} onClick={() => setActive("descriptions")}>Product Descriptions</button>
+                                <button className={`py-2 ${active === "reviews" ? "border border-transparent border-b-primary text-primary": ""}`} onClick={() => setActive("reviews")}>Product Reviews</button>
+                                <button className={`py-2 ${active === "seller" ? "border border-transparent border-b-primary text-primary": ""}`} onClick={() => setActive("seller")}>Seller Information</button>
                             </div>
                             <div className="w-full overflow-hidden">
                                 <div className="flex w-[200%]">
@@ -164,6 +162,10 @@ export default function Product() {
                                     <div className={`${active === "reviews" ? "translate-x-[-100%]" : "translate-x-[100%]"} w-[100%] transform-all duration-700`}>
                                         <h2 className="font-semibold uppercase">Product Reviews:</h2>
                                         <div className="h-full">No reviews posted yet</div>
+                                    </div>     
+                                    <div className={`${active === "seller" ? "translate-x-[-200%]" : "translate-x-[100%]"} w-[100%] transform-all duration-700`}>
+                                        <h2 className="font-semibold uppercase">Seller&apos;s Information</h2>
+                                        <Link href={`/store?seller=${product?.store}`} className="h-full">{product?.store}</Link>
                                     </div>     
                                 </div>                           
                             </div>

@@ -22,6 +22,7 @@ export interface IProduct {
     createdAt: string;
     updatedAt: string;
     rating: number;
+    store: string;
 }
 
 export interface ICart {
