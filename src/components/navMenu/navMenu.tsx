@@ -26,7 +26,7 @@ export default function Menu ({ close, list }: MenuProps) {
                             ${pathname === item.href ? "bg-tetiary dark:bg-dark text-primary" : ""}
                         `}
                     >
-                        <span className="md:text-lg text-2xl opacity-[0.6]">{item.icon}</span>
+                        <span className="text-lg opacity-[0.6]">{item.icon}</span>
                         <span className="md:inline">{item.title}</span>
                     </Link>
                 )) 
