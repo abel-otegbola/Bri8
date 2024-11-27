@@ -42,7 +42,7 @@ function Topbar() {
     const accountPages = ["dashboard", "admin", "agent"]
 
     return (
-        <div className={`flex py-2 pt-4 px-6 justify-between items-center ${accountPages.includes(pathname.split("/")[1]) ? "md:px-10" : "md:px-[8%]"}`}>
+        <div className={`flex py-2 pt-4 md:static fixed top-0 left-0 w-full justify-between items-center bg-white dark:bg-black z-[3] ${accountPages.includes(pathname.split("/")[1]) ? "md:px-10 pl-6 pr-[100px] md:py-2 py-5" : "md:px-[8%] px-6"}`}>
             <div className="md:w-[17%]">
                 <Link href="/" className="w-[70px] h-[30px] rounded flex justify-center items-center font-bold">
                     <LogoIcon />
@@ -66,7 +66,7 @@ function Topbar() {
                     <ShoppingCart weight="light" size={20}/>
                     <span className="absolute text-[8px] -top-2 -right-2 px-1 py-0 rounded-full bg-green-600 text-white">{cart.length}</span>
                 </Link>
-                <div className="relative">
+                <div className={`relative ${accountPages.includes(pathname.split("/")[1]) ? "md:block hidden" : "block"}`}>
                     <button onClick={() => setOpen(!open)} className="h-[40px] w-[40px]">
                         <Avatar user={user || { displayName: "user" }} />
                     </button>

@@ -1,11 +1,13 @@
 'use client'
-import { ReactElement, useState } from "react";
+import { ReactElement, useContext, useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../../firebase/firebase";
-import { TbDashboard, TbListDetails, TbLogout, TbSettings, TbUser } from "react-icons/tb";
+import { TbDashboard, TbListDetails, TbLogout, TbPackage, TbSettings, TbStar, TbUser, TbUsers } from "react-icons/tb";
 import { Icon } from "@phosphor-icons/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { AuthContext } from "@/context/useAuth";
+import Avatar from "@/components/avatar/avatar";
 
 
 export interface Link {
@@ -17,8 +19,8 @@ export default function Layout({
   }: Readonly<{
     children: React.ReactNode;
   }>) {
-
-    const [open,] = useState(false)
+    const { user } = useContext(AuthContext)
+    const [open, setOpen] = useState(false)
     const auth = getAuth(app);
     const pathname = usePathname();
 
@@ -29,14 +31,21 @@ export default function Layout({
         { id: 4, label: "Settings", icon: <TbSettings />, link: "/settings" },
     ]
 
+    const storeLinks: Link[] = [
+        ...generalLinks,
+        { id: 0, label: "Products", icon: <TbPackage />, link: "/dashboard/products" },
+        { id: 1, label: "Customers", icon: <TbUsers />, link: "/dashboard/customers" },
+        { id: 2, label: "Reviews", icon: <TbStar />, link: "/dashboard/review" },
+    ]
+
     return (
         <>
-
-            <div className="flex relative w-full md:px-8 px-6 my-2 h-[85vh] border-t border-gray-500/[0.1]">
-                <div className={`flex flex-col justify-between lg:w-[18%] md:w-[20%] w-[240px] md:sticky absolute top-0 p-4 pr-8 md:pl-0 left-0 bg-white dark:bg-black md:border border-transparent border-r-gray-500/[0.1] overflow-hidden z-10 transition-all duration-700 ${open ? "translate-x-[0]": "md:translate-x-[0] translate-x-[-130%]"}`}>  
+            <button className="md:hidden fixed top-[14px] md:right-9 right-7 md:p-2 z-[4]" onClick={() => setOpen(!open)}><Avatar user={user} /></button>
+            <div className="flex relative w-full my-2 min-h-[85vh] border-t border-gray-500/[0.1] overflow-hidden">
+                <div className={`flex flex-col justify-between lg:w-[20%] md:w-[24%] w-[240px] h-full md:sticky fixed md:top-0 top-[64px] p-4 px-8 right-0 bg-white dark:bg-black border border-transparent border-x-gray-500/[0.1] overflow-hidden z-[2] transition-all duration-700 ${open ? "translate-x-[0]": "md:translate-x-[0] translate-x-[130%]"}`}>  
                     <div className="flex flex-col gap-1">
                         {
-                        generalLinks.map(link => {
+                        (user?.role !== "store" ? storeLinks : generalLinks).map(link => {
                                 return (
                                 <Link key={link.id} href={ link.link} className={`flex items-center justify-between my-[3px] px-4 py-1 rounded ${pathname === link.link ? "bg-primary text-white" : " hover:bg-primary/[0.1] hover:text-primary"}`}>
                                     <span className="w-[30px] text-lg opacity-[0.6]">{link.icon}</span>
@@ -53,7 +62,7 @@ export default function Layout({
                     </button>
                 </div>
 
-                    <div className="flex-1 md:p-8 md:py-8 py-[60px]">
+                <div className="flex-1 md:p-8 md:py-8 py-[100px]">
                 {
                     children
                 }

@@ -1,14 +1,14 @@
 'use client'
 import { useLocalStorage } from "@/customHooks/useLocaStorage";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "nextjs-toploader/app";
-import { ISignupData } from "@/interface/profile";
+import { ISignupData, UserData } from "@/interface/profile";
 import { app } from "@/firebase/firebase";
 
 type values = {
-    user: User;
+    user: UserData;
     popup: { type: string, msg: string };
     loading: boolean;
     setPopup: (aug0: values["popup"]) => void;
