@@ -12,7 +12,8 @@ export default function Home() {
       <Slider images={[
         { id: "0", src: "/bg3.png" },
         { id: "1", src: "/bg3-new.png" },
-        { id: "2", src: "/bg2.png" }
+        { id: "2", src: "/bg2.png" },
+        { id: "3", src: "/bg1.png" }
       ]} />
 
       <section className="md:px-[8%] px-4 py-[20px]">
