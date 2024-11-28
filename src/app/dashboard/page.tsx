@@ -15,8 +15,8 @@ function DashboardHome() {
     return (
         <>
         
-                <div className="w-full px-6">
-                    <div className="flex items-center gap-4 border border-transparent border-b-gray-500/[0.1] p-2 py-4">
+                <div className="w-full">
+                    <div className="flex items-center gap-4 border border-transparent border-b-gray-500/[0.1] p-2 pb-4">
                         <Avatar user={user} />
                         <div className="">
                             <h1 className="text-[20px] font-semibold capitalize">Welcome back, <span className="Capitalize">{user?.email?.split("@")[0]}</span></h1>

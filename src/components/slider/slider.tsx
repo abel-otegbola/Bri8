@@ -29,11 +29,9 @@ export default function Slider({ images }: ImagesProps) {
           "w-[82%] left-[9%] scale-100 bg-center z-[2]",
           "w-[6%] left-[94%] scale-75 bg-left z-[-1]",
         ])
-        setTimeout(() => {
-            setCurrentIndex(
-                (prevIndex) => (prevIndex + 1 + images.length) % images.length
-              );
-        }, 1000)
+        setCurrentIndex(
+            (prevIndex) => (prevIndex + 1 + images.length) % images.length
+        );
     };
 
     const nextSlide = (): void => {
@@ -45,11 +43,10 @@ export default function Slider({ images }: ImagesProps) {
           "w-[82%] left-[9%] scale-100 bg-center z-[2]",
           "w-[6%] left-[94%] scale-75 bg-left z-[-1]",
         ])
-        setTimeout(() => {
-            setCurrentIndex(
-                (prevIndex) => (prevIndex + 1 + images.length) % images.length
-              );
-        }, 1000)
+        
+        setCurrentIndex(
+            (prevIndex) => (prevIndex + 1 + images.length) % images.length
+        );
     };
 
     useEffect(() => {

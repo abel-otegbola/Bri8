@@ -41,13 +41,13 @@ export default function Layout({
     return (
         <>
             <button className="md:hidden fixed top-[14px] md:right-9 right-7 md:p-2 z-[4]" onClick={() => setOpen(!open)}><Avatar user={user} /></button>
-            <div className="flex relative w-full my-2 min-h-[85vh] border-t border-gray-500/[0.1] overflow-hidden">
-                <div className={`flex flex-col justify-between lg:w-[20%] md:w-[24%] w-[240px] h-full md:sticky fixed md:top-0 top-[64px] p-4 px-8 right-0 bg-white dark:bg-black border border-transparent border-x-gray-500/[0.1] overflow-hidden z-[2] transition-all duration-700 ${open ? "translate-x-[0]": "md:translate-x-[0] translate-x-[130%]"}`}>  
+            <div className="flex relative w-full my-1 min-h-[85vh] border-t border-gray-500/[0.1] overflow-hidden">
+                <div className={`flex flex-col justify-between lg:w-[20%] md:w-[24%] w-[240px] h-[88vh] md:sticky fixed md:top-0 top-[64px] py-4 md:px-8 right-0 bg-white dark:bg-black border border-transparent border-x-gray-500/[0.1] overflow-hidden z-[2] transition-all duration-700 ${open ? "translate-x-[0]": "md:translate-x-[0] translate-x-[130%]"}`}>  
                     <div className="flex flex-col gap-1">
                         {
                         (user?.role !== "store" ? storeLinks : generalLinks).map(link => {
                                 return (
-                                <Link key={link.id} href={ link.link} className={`flex items-center justify-between my-[3px] px-4 py-1 rounded ${pathname === link.link ? "bg-primary text-white" : " hover:bg-primary/[0.1] hover:text-primary"}`}>
+                                <Link key={link.id} href={ link.link} className={`flex items-center justify-between my-[3px] px-4 py-1 md:rounded ${pathname === link.link ? "bg-primary text-white" : " hover:bg-primary/[0.1] hover:text-primary"}`}>
                                     <span className="w-[30px] text-lg opacity-[0.6]">{link.icon}</span>
                                     <span className="flex-1 py-2 break-normal">{link.label}</span>
                                 </Link>
@@ -62,7 +62,7 @@ export default function Layout({
                     </button>
                 </div>
 
-                <div className="flex-1 md:p-8 md:py-8 py-[100px]">
+                <div className="flex-1 md:p-8 md:py-8 p-6">
                 {
                     children
                 }
