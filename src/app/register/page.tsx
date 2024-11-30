@@ -45,10 +45,10 @@ export default function Registerpage() {
                         </div>
 
                         <Formik
-                            initialValues={{ fullname: '', email: '', password: ''}}
+                            initialValues={{ fullname: '', email: '', password: '', role: ''}}
                             validationSchema={registerSchema}
                             onSubmit={( values, { setSubmitting }) => {
-                                signUp({email: values.email, password: values.password}, "/dashbaord");
+                                signUp({email: values.email, password: values.password, fullname: values.fullname, role: active});
                                 setSubmitting(false);
                             }}
                             >

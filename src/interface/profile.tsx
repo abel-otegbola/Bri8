@@ -1,26 +1,24 @@
-import { User } from "firebase/auth";
-
-export interface UserData extends User {
+export interface UserData {
     id?: string,
-    email: string | null,
-    fullname?: string,
-    img?: string,
+    email?: string | null,
+    fullname?: string | null,
+    image?: string | null,
     bio?: string,
     address?: string,
-    role: "user" | "store",
+    role?: string,
 }
 
 export interface StoreData {
     [x: string]: string | number | boolean | string[] | null | undefined,
     id?: string,
     email: string | null,
-    fullname?: string,
+    name?: string,
     storename: string,
-    img?: string,
+    image?: string,
     bio?: string,
     address?: string,
     cover?: string,
-    role: "user" | "store"
+    role: string
 }
 
 export interface ISignupData { email: string, password: string }

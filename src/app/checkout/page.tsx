@@ -46,7 +46,7 @@ export default function CheckoutPage() {
                                 <Input name="address" label="" value={values.address} onChange={handleChange} type="text" error={touched.address ? errors.address : ""} placeholder="Address" leftIcon={<MapPin size={16}/>}/>
                                 <Input name="phone" label="" value={values.phone} onChange={handleChange} type="text" error={touched.phone ? errors.phone : ""} placeholder="Phone number" leftIcon={<Phone size={16}/>}/>
 
-                                <Button disabled={isSubmitting} >{ isSubmitting ? <LoaderIcon/> : "Buy now" }</Button>
+                                <Button className="full" disabled={isSubmitting} >{ isSubmitting ? <LoaderIcon/> : "Buy now" }</Button>
                             </form>
                         )}
                         </Formik>

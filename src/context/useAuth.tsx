@@ -1,20 +1,22 @@
 'use client'
 import { useLocalStorage } from "@/customHooks/useLocaStorage";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "nextjs-toploader/app";
-import { ISignupData, UserData } from "@/interface/profile";
+import { UserData } from "@/interface/profile";
 import { app } from "@/firebase/firebase";
+import { SessionProvider, signIn } from "next-auth/react";
+import { register } from "@/actions/register";
 
 type values = {
     user: UserData;
     popup: { type: string, msg: string };
     loading: boolean;
     setPopup: (aug0: values["popup"]) => void;
-    signIn: (email: string, password: string, callbackUrl: string) => void; 
-    signUp: (data: ISignupData, callbackUrl: string) => void;
-    socialSignIn: (type: string) => void;
+    login: (email: string, password: string, callbackUrl: string) => void; 
+    signUp: (data: { email: string, password: string, fullname: string, role: string }) => void;
+    sociallogin: (type: string) => void;
     logOut: () => void;
 }
 
@@ -32,26 +34,27 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
         return msg.replace("Firebase: Error (auth/", "").replace("-", " ").replace(")", "")
     }
 
-    const signIn = (email: string, password: string, callbackUrl: string) => {
+    const login = async (email: string, password: string, callbackUrl: string) => {
         setLoading(true)
-        signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        const res = await signIn("credentials", { email, password, redirect: false });
+        if(res?.ok) {
             setPopup({ type: "success", msg: "Login Successful" })
             setLoading(false)
             router.push(callbackUrl ? callbackUrl : "/dashboard")
-        })
-        .catch((error: { message: string }) => {
-            setPopup({ type: "error", msg: formatError(error.message) })
+        }
+        if(res?.error) {
+            setPopup({ type: "error", msg: formatError(res.error as string) })
             setLoading(false)
-        });
+        }
     }
 
-    const signUp = (data: ISignupData, callbackUrl: string) => {
+    const signUp = (data: { email: string, password: string, fullname: string, role: string }) => {
         setLoading(true)
-        createUserWithEmailAndPassword(auth, data.email, data.password)
+        register(data)
         .then(() => {
             setLoading(false)
-            router.push(callbackUrl ? callbackUrl : "/dashboard")
+            setPopup({ type: "success", msg: "Signup Successful, Please login to continue" })
+            router.push("/login")
         })
         .catch((error: { message: string }) => {
             setPopup({ type: "error", msg: formatError(error.message) })
@@ -59,24 +62,25 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
         });
     }
     
-    const socialSignIn = (type: string) => {
+    const sociallogin = (type: string) => {
         setLoading(true)
-        if(type === "Google") {
-            const provider = new GoogleAuthProvider()
-            signInWithPopup(auth, provider)
-            .then(() => {
-                // const credential = GoogleAuthProvider.credentialFromResult(result);
-                // const token = credential?.accessToken;
-                // const user = result.user
-                setPopup({ type: "success", msg:  "Login Successful" })
-                setLoading(false)
+        console.log(type)
+        // if(type === "Google") {
+        //     const provider = new GoogleAuthProvider()
+        //     loginWithPopup(auth, provider)
+        //     .then(() => {
+        //         // const credential = GoogleAuthProvider.credentialFromResult(result);
+        //         // const token = credential?.accessToken;
+        //         // const user = result.user
+        //         setPopup({ type: "success", msg:  "Login Successful" })
+        //         setLoading(false)
 
-            })
-            .catch((error: { message: string }) => {
-                setPopup({ type: "error", msg: formatError(error.message) })
-                setLoading(false)
-            })
-        }
+        //     })
+        //     .catch((error: { message: string }) => {
+        //         setPopup({ type: "error", msg: formatError(error.message) })
+        //         setLoading(false)
+        //     })
+        // }
     }
 
     const logOut = () => {
@@ -104,9 +108,11 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
       }, [popup]);
 
     return (
-        <AuthContext.Provider value={{ user, popup, loading, setPopup, signIn, signUp, socialSignIn, logOut }}>
+        <AuthContext.Provider value={{ user, popup, loading, setPopup, login, signUp, sociallogin, logOut }}>
             <Toaster containerClassName="p-8" />
-            {children}
+            <SessionProvider>
+                {children}
+            </SessionProvider>
         </AuthContext.Provider>
     );
 }

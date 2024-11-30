@@ -1,16 +1,24 @@
 'use client'
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { PiMoney, PiWatchLight } from "react-icons/pi";
 import { FiCalendar, FiShoppingBag } from "react-icons/fi";
 import { AuthContext } from "@/context/useAuth";
 import Avatar from "@/components/avatar/avatar";
 import { currencyFormatter } from "@/helpers/currencyFormatter";
 import Button from "@/components/button/button";
+import { useSession } from "next-auth/react";
 
 
 function DashboardHome() {
     const { user } = useContext(AuthContext);
+    const { data: session } = useSession()
 
+    useEffect(() => {
+        if (session) {
+            const { user } = session;
+            console.log(user); // This will log the complete user object
+        }
+    }, [session])
 
     return (
         <>
@@ -19,7 +27,7 @@ function DashboardHome() {
                     <div className="flex items-center gap-4 border border-transparent border-b-gray-500/[0.1] p-2 pb-4">
                         <Avatar user={user} />
                         <div className="">
-                            <h1 className="text-[20px] font-semibold capitalize">Welcome back, <span className="Capitalize">{user?.email?.split("@")[0]}</span></h1>
+                            <h1 className="text-[20px] font-semibold capitalize">Welcome back, <span className="Capitalize">{(user?.email)?.split("@")[0]}</span></h1>
                             <p className="leading-[180%] flex items-center text-[12px] opacity-[0.7] gap-2"> <PiWatchLight className="text-red-500 text-[14px]" />View your orders, products and discounts</p>
                         </div>
                         

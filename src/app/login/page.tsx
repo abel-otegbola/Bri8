@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 export default function Loginpage() {
-    const { signIn, socialSignIn, loading } = useContext(AuthContext)
+    const { login, sociallogin, loading } = useContext(AuthContext)
     
     return (
         <div className="min-h-[400px] flex mt-4 md:mx-[12%] sm:items-center justify-between">
@@ -24,7 +24,7 @@ export default function Loginpage() {
                             <p className="mt-2 mb-3 text-center">Add your details below to get back into the app</p>
                         </div>
 
-                        <Button size="full" variant="tetiary" onClick={() => socialSignIn("Google")} className=""><GoogleIcon width={20} /></Button>
+                        <Button size="full" variant="tetiary" onClick={() => sociallogin("Google")} className=""><GoogleIcon width={20} /></Button>
 
                         <p>OR</p>
 
@@ -32,7 +32,7 @@ export default function Loginpage() {
                             initialValues={{ email: '', password: ''}}
                             validationSchema={loginSchema}
                             onSubmit={( values, { setSubmitting }) => {
-                                signIn(values.email, values.password, "/dashboard");
+                                login(values.email, values.password, '/dashboard');
                                 setSubmitting(false);
                             }}
                             >

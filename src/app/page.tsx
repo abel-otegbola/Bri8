@@ -7,7 +7,7 @@ import { gadgets } from "@/data/products";
 export default function Home() {
   
   return (
-    <main>
+    <main className="mt-2">
 
       <Slider images={[
         { id: "0", src: "/bg5.jpg" },

@@ -10,6 +10,8 @@ import Menu from "../navMenu/navMenu"
 import { usePathname } from "next/navigation"
 import Search from "../search/search"
 import { storeContext } from "@/context/useStore"
+import { useSession } from "next-auth/react"
+import { useLocalStorage } from "@/customHooks/useLocaStorage"
 
 type navTab =  {
     id: number | string,
@@ -19,10 +21,20 @@ type navTab =  {
 }
 
 function Topbar() {
+    const [ authUser, setUser ] = useLocalStorage("user", null);
     const { user } = useContext(AuthContext)
     const { cart } = useContext(storeContext)
     const [open, setOpen] = useState(false)
     const pathname = usePathname()
+    const { data, status } = useSession()
+
+    
+    useEffect(() => {
+        if(status === "authenticated") {
+            setUser(data.user)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setUser, status]);
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -68,7 +80,7 @@ function Topbar() {
                 </Link>
                 <div className={`relative ${accountPages.includes(pathname.split("/")[1]) ? "md:block hidden" : "block"}`}>
                     <button onClick={() => setOpen(!open)} className="h-[40px] w-[40px]">
-                        <Avatar user={user || { displayName: "user" }} />
+                        <Avatar user={user || authUser || { displayName: "user" }} />
                     </button>
                     {
                         open ?

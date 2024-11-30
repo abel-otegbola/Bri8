@@ -28,14 +28,14 @@ export default function Layout({
         { id: 0, label: "Dashboard", icon: <TbDashboard />, link: "/dashboard" },
         { id: 1, label: "Orders", icon: <TbListDetails />, link: "/dashboard/orders" },
         { id: 2, label: "Profile", icon: <TbUser />, link: "/dashboard/profile" },
-        { id: 4, label: "Settings", icon: <TbSettings />, link: "/settings" },
+        { id: 3, label: "Settings", icon: <TbSettings />, link: "/settings" },
     ]
 
     const storeLinks: Link[] = [
         ...generalLinks,
-        { id: 0, label: "Products", icon: <TbPackage />, link: "/dashboard/products" },
-        { id: 1, label: "Customers", icon: <TbUsers />, link: "/dashboard/customers" },
-        { id: 2, label: "Reviews", icon: <TbStar />, link: "/dashboard/review" },
+        { id: 4, label: "Products", icon: <TbPackage />, link: "/dashboard/products" },
+        { id: 5, label: "Customers", icon: <TbUsers />, link: "/dashboard/customers" },
+        { id: 6, label: "Reviews", icon: <TbStar />, link: "/dashboard/review" },
     ]
 
     return (
