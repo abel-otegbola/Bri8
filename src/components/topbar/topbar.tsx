@@ -4,14 +4,13 @@ import Tab from "../tab/tab"
 import Link from "next/link"
 import { Bell, Gear, Heart, ShoppingCart, SignIn, SignOut, Storefront, User, UserCircle } from "@phosphor-icons/react"
 import LogoIcon from "@/assets/icons/logo"
-import { AuthContext } from "@/context/useAuth"
 import Avatar from "../avatar/avatar"
 import Menu from "../navMenu/navMenu"
 import { usePathname } from "next/navigation"
 import Search from "../search/search"
 import { storeContext } from "@/context/useStore"
 import { useSession } from "next-auth/react"
-import { useLocalStorage } from "@/customHooks/useLocaStorage"
+import { useOutsideClick } from "@/helpers/useClickOutside"
 
 type navTab =  {
     id: number | string,
@@ -21,20 +20,10 @@ type navTab =  {
 }
 
 function Topbar() {
-    const [ authUser, setUser ] = useLocalStorage("user", null);
-    const { user } = useContext(AuthContext)
     const { cart } = useContext(storeContext)
     const [open, setOpen] = useState(false)
     const pathname = usePathname()
-    const { data, status } = useSession()
-
-    
-    useEffect(() => {
-        if(status === "authenticated") {
-            setUser(data.user)
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [setUser, status]);
+    const { data } = useSession()
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -52,6 +41,9 @@ function Topbar() {
     ]
     
     const accountPages = ["dashboard", "admin", "agent"]
+
+    const closeMenu = useOutsideClick(setOpen, false)
+
 
     return (
         <div className={`flex py-2 pt-4 md:static fixed top-0 left-0 w-full justify-between items-center bg-white dark:bg-black z-[3] ${accountPages.includes(pathname.split("/")[1]) ? "md:px-10 pl-6 pr-[100px] md:py-2 py-5" : "md:px-[8%] px-6"}`}>
@@ -78,16 +70,16 @@ function Topbar() {
                     <ShoppingCart weight="light" size={20}/>
                     <span className="absolute text-[8px] -top-2 -right-2 px-1 py-0 rounded-full bg-green-600 text-white">{cart.length}</span>
                 </Link>
-                <div className={`relative ${accountPages.includes(pathname.split("/")[1]) ? "md:block hidden" : "block"}`}>
+                <div ref={closeMenu} className={`relative ${accountPages.includes(pathname.split("/")[1]) ? "md:block hidden" : "block"}`}>
                     <button onClick={() => setOpen(!open)} className="h-[40px] w-[40px]">
-                        <Avatar user={user || authUser || { displayName: "user" }} />
+                        <Avatar user={data?.user || { name: "user" }} />
                     </button>
                     {
                         open ?
                             <Menu close={setOpen} list={[ 
-                                user ? {id: "0", title: "Account", icon: <User />, href: "/dashboard"}: {id: "0", title: "Start selling", icon: <Storefront />, href: "/register"},  
+                                data?.user ? {id: "0", title: "Account", icon: <User />, href: "/dashboard"}: {id: "0", title: "Start selling", icon: <Storefront />, href: "/register"},  
                                 {id: "1", title: "Settings", icon: <Gear />, href: "/settings"},  
-                                user ? {id: "2", title: "Logout", icon: <SignOut />, href: "#"} : {id: "2", title: "Login", icon: <SignIn />, href: "/login"},  
+                                data?.user ? {id: "2", title: "Logout", icon: <SignOut />, href: "#"} : {id: "2", title: "Login", icon: <SignIn />, href: "/login"},  
                             ]} />
                         : ""
                     }

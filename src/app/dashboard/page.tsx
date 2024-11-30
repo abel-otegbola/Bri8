@@ -1,24 +1,15 @@
 'use client'
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { PiMoney, PiWatchLight } from "react-icons/pi";
 import { FiCalendar, FiShoppingBag } from "react-icons/fi";
 import { AuthContext } from "@/context/useAuth";
 import Avatar from "@/components/avatar/avatar";
 import { currencyFormatter } from "@/helpers/currencyFormatter";
 import Button from "@/components/button/button";
-import { useSession } from "next-auth/react";
 
 
 function DashboardHome() {
     const { user } = useContext(AuthContext);
-    const { data: session } = useSession()
-
-    useEffect(() => {
-        if (session) {
-            const { user } = session;
-            console.log(user); // This will log the complete user object
-        }
-    }, [session])
 
     return (
         <>
