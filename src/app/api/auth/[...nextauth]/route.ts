@@ -3,6 +3,7 @@ import credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import User from "@/models/user";
 import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
 
 const handler = NextAuth({
   secret: process.env.NEXT_AUTH_SECRET,
@@ -31,6 +32,11 @@ const handler = NextAuth({
           return user;
       },
     }),
+    Google({
+      clientId: process.env.GOOGLE_ID || "",
+      clientSecret: process.env.GOOGLE_SECRET || "",
+      authorization: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+    })
   ],
   session: {
     strategy: "jwt",
@@ -55,6 +61,9 @@ const handler = NextAuth({
       return userSession;
     },
   },
+  pages: {
+    signIn: ""
+  }
 }
 );
 export { handler as GET, handler as POST };

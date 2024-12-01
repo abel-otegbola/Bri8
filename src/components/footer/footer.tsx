@@ -1,11 +1,14 @@
 'use client'
 
 import { FacebookLogo, InstagramLogo, XLogo } from "@phosphor-icons/react";
+import { usePathname } from "next/navigation";
 
 
 function Footer() {
+    const pathname  = usePathname()
+
     return (
-        <footer className="bg-dark text-white md:mt-[100px] mt-8 md:m-4 md:rounded-[20px]">
+        <footer className={`bg-dark text-white md:mt-[100px] mt-8 md:m-4 md:rounded-[20px] ${pathname.indexOf("/dashboard") !== -1 ? "hidden" : ""}`}>
             <div className="grid md:grid-cols-4 grid-cols-2 items-start md:gap-[30px] gap-[60px] md:px-[8%] p-8 py-[60px]">
                 <ul className="flex flex-col gap-[20px] justify-center">
                     <h2 className="font-semibold text-[16px]">NAVIGATIONS</h2>

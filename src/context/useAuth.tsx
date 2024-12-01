@@ -63,25 +63,18 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
         });
     }
     
-    const sociallogin = (type: string) => {
+    const sociallogin = async (callbackUrl: string) => {
         setLoading(true)
-        console.log(type)
-        // if(type === "Google") {
-        //     const provider = new GoogleAuthProvider()
-        //     loginWithPopup(auth, provider)
-        //     .then(() => {
-        //         // const credential = GoogleAuthProvider.credentialFromResult(result);
-        //         // const token = credential?.accessToken;
-        //         // const user = result.user
-        //         setPopup({ type: "success", msg:  "Login Successful" })
-        //         setLoading(false)
-
-        //     })
-        //     .catch((error: { message: string }) => {
-        //         setPopup({ type: "error", msg: formatError(error.message) })
-        //         setLoading(false)
-        //     })
-        // }
+        const res = await signIn("Google", {redirect: false });
+        if(res?.ok) {
+            setPopup({ type: "success", msg: "Login Successful" })
+            setLoading(false)
+            router.push(callbackUrl ? callbackUrl : "/dashboard")
+        }
+        if(res?.error) {
+            setPopup({ type: "error", msg: formatError(res.error as string) })
+            setLoading(false)
+        }
     }
 
     const logOut = () => {
