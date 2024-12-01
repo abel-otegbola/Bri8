@@ -6,7 +6,6 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Avatar from "@/components/avatar/avatar";
 import { signOut, useSession } from "next-auth/react";
-import { useLocalStorage } from "@/customHooks/useLocaStorage";
 
 
 export interface Link {
@@ -39,7 +38,7 @@ export default function Layout({
 
     if(!data?.user) {
         router.push("/login")
-        return f
+        return <></>
     }
 
     return (

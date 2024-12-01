@@ -72,7 +72,7 @@ function Topbar() {
                 </Link>
                 <div ref={closeMenu} className={`relative ${accountPages.includes(pathname.split("/")[1]) ? "md:block hidden" : "block"}`}>
                     <button onClick={() => setOpen(!open)} className="h-[40px] w-[40px]">
-                        <Avatar user={data?.user || { name: "user" }} />
+                        <Avatar user={data?.user || { fullname: "user" }} />
                     </button>
                     {
                         open ?

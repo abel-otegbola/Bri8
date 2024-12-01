@@ -14,8 +14,9 @@ type values = {
     popup: { type: string, msg: string };
     loading: boolean;
     setPopup: (aug0: values["popup"]) => void;
+    setUser: (aug0: unknown) => void;
     login: (email: string, password: string, callbackUrl: string) => void; 
-    signUp: (data: { email: string, password: string, fullname: string, role: string }) => void;
+    signUp: (data: { email: string, password: string, fullname: string, role: string, storename?: string }) => void;
     sociallogin: (type: string) => void;
     logOut: () => void;
 }
@@ -48,7 +49,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
         }
     }
 
-    const signUp = (data: { email: string, password: string, fullname: string, role: string }) => {
+    const signUp = (data: { email: string, password: string, fullname: string, role: string, storename?: string }) => {
         setLoading(true)
         register(data)
         .then(() => {
@@ -108,7 +109,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
       }, [popup]);
 
     return (
-        <AuthContext.Provider value={{ user, popup, loading, setPopup, login, signUp, sociallogin, logOut }}>
+        <AuthContext.Provider value={{ user, popup, loading, setPopup, setUser, login, signUp, sociallogin, logOut }}>
             <Toaster containerClassName="p-8" />
             <SessionProvider>
                 {children}

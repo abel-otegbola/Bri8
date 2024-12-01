@@ -1,11 +1,12 @@
 'use client'
-import { useContext } from "react";
+
 import Button from "../../../components/button/button";
-import { AuthContext } from "@/context/useAuth";
 import Input from "@/components/input/input";
+import { Envelope, User } from "@phosphor-icons/react";
+import { useSession } from "next-auth/react";
 
 export default function Profile() {
-    const { user } = useContext(AuthContext)
+    const { data } = useSession()
 
     return (
         <div className="">
@@ -22,13 +23,13 @@ export default function Profile() {
                         <div className="py-2 mb-1">
                             <div className="flex flex-col gap-2">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
-                                <Input defaultValue={user?.displayName || ""} />
+                                <Input defaultValue={data?.user?.fullname || ""} leftIcon={<User />} />
                             </div>
                         </div>
                         <div className="py-2 mb-4">
                             <div className="flex flex-col gap-2">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
-                                <Input defaultValue={user?.email || ""} />
+                                <Input defaultValue={data?.user?.email || ""} leftIcon={<Envelope />}/>
                             </div>
                         </div>
                         <Button>Save changes</Button>

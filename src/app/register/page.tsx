@@ -45,10 +45,15 @@ export default function Registerpage() {
                         </div>
 
                         <Formik
-                            initialValues={{ fullname: '', email: '', password: '', role: ''}}
+                            initialValues={{ fullname: '', email: '', password: '', role: '', storename: ''}}
                             validationSchema={registerSchema}
                             onSubmit={( values, { setSubmitting }) => {
-                                signUp({email: values.email, password: values.password, fullname: values.fullname, role: active});
+                                signUp(
+                                    active === "Buyer" ?
+                                    {email: values.email, password: values.password, fullname: values.fullname, role: active}
+                                    :
+                                    {email: values.email, password: values.password, fullname: values.fullname, role: active, storename: values.storename}
+                                );
                                 setSubmitting(false);
                             }}
                             >
@@ -65,6 +70,13 @@ export default function Registerpage() {
 
                                     
                                     <Input name="fullname" label="" value={values.fullname} onChange={handleChange} type="text" error={touched.fullname ? errors.fullname : ""} placeholder="Full name" leftIcon={<UserCircle size={16}/>}/>
+
+                                    {
+                                        active === "Seller" ?
+                                        <Input name="storename" label="" value={values.storename} onChange={handleChange} type="text" error={touched.storename ? errors.storename : ""} placeholder="Store name" leftIcon={<Storefront size={16}/>}/>
+                                        :
+                                        ""
+                                    }
 
                                     <Input name="email" label="" value={values.email} onChange={handleChange} type="email" error={touched.email ? errors.email : ""} placeholder="Email Address" leftIcon={<Envelope size={16}/>}/>
 
