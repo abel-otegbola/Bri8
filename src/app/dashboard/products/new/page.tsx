@@ -5,9 +5,10 @@ import Button from "@/components/button/button";
 import Input from "@/components/input/input";
 import Textarea from "@/components/textarea/textarea";
 import { X } from "@phosphor-icons/react";
+import { v7 } from "uuid";
 
 export default function Userproducts() {
-    const [data, setData] = useState<IProduct>({ id: "12345" } as IProduct)
+    const [data, setData] = useState<IProduct>({ id: v7() } as IProduct)
     const [tag, setTag] = useState("")
 
     const addTag = () => {
