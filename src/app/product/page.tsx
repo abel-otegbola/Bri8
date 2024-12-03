@@ -68,9 +68,9 @@ export default function Product() {
                                 ))  || [ { id: 0, src: "/bg1.png" } ]} />
                             </div>
                             <div className="md:px-[3%] md:py-0 py-6 md:w-[60%] w-full">
-                                <h2 className="py-2 md:text-[24px] text-[18px] font-medium">{product?.title}</h2>
+                                <h2 className="py-2 md:text-[28px] text-[18px] font-medium">{product?.title}</h2>
                                 <div className="flex justify-between items-center gap-6">
-                                    <p className="flex items-center text-[40px] font-bold py-4">{currencyFormatter(+(product?.price || 0) * 1700)}</p>
+                                    <p className="flex items-center text-[24px] font-bold py-4">{currencyFormatter(+(product?.price || 0) * 1700)}</p>
                                     <div>
                                         {
                                             wishlist.indexOf(id || "") === -1 ? 

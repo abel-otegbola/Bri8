@@ -7,7 +7,7 @@ import { gadgets } from "@/data/products";
 export default function Home() {
   
   return (
-    <main className="mt-2">
+    <main className="md:mt-8 mt-[80px]">
 
       <Slider images={[
         { id: "0", src: "/bg5.jpg" },
@@ -35,9 +35,9 @@ export default function Home() {
 
       </section>
 
-      <section className="md:p-[8%] p-4 mb-[60px] py-[20px]">
-          <div className="flex flex-wrap justify-center items-end md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg4.png')] bg-fixed bg-cover bg-center">
-            <h2 className="md:w-[30%] w-[70%] -mb-[30px] backdrop-blur-sm bg-white/[0.8] dark:bg-dark/[0.8] p-4 px-8 rounded-lg text-center">Design Your Dream Workspace with our Stunning Gadgets</h2>
+      <section className="md:p-[8%] p-4 mb-[60px] py-[60px]">
+          <div className="flex flex-wrap justify-center items-start md:h-[450px] h-[350px] w-full rounded-[20px] bg-slate-200 break-inside-avoid bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center">
+            <h2 className="md:w-[30%] w-[70%] -mt-[40px] backdrop-blur-sm bg-white/[0.8] dark:bg-black/[0.8] p-4 px-8 rounded-lg text-center">Design Your Dream Workspace with our Stunning Gadgets</h2>
           </div>
       </section>
 

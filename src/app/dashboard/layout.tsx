@@ -2,7 +2,7 @@
 import { ReactElement, useState } from "react";
 import { TbDashboard, TbListDetails, TbLogout, TbPackage, TbSettings, TbStar, TbUser, TbUsers } from "react-icons/tb";
 import { Icon } from "@phosphor-icons/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Avatar from "@/components/avatar/avatar";
 import { signOut, useSession } from "next-auth/react";
@@ -20,7 +20,7 @@ export default function Layout({
     const { data } = useSession()
     const [open, setOpen] = useState(false)
     const pathname = usePathname();
-    const router = useRouter()
+    // const router = useRouter()
 
     const generalLinks: Link[] = [
         { id: 0, label: "Dashboard", icon: <TbDashboard />, link: "/dashboard" },
@@ -36,14 +36,14 @@ export default function Layout({
         { id: 6, label: "Reviews", icon: <TbStar />, link: "/dashboard/review" },
     ]
 
-    if(!data?.user) {
-        router.push("/login")
-        return <></>
-    }
+    // if(!data?.user) {
+    //     router.push("/login")
+    //     return <></>
+    // }
 
     return (
         <>
-            <button className="md:hidden fixed top-[14px] md:right-9 right-7 md:p-2 z-[4]" onClick={() => setOpen(!open)}><Avatar user={data?.user || { name: "user" }} /></button>
+            <button className="md:hidden fixed top-[14px] md:right-9 right-7 md:p-2 z-[4]" onClick={() => setOpen(!open)}><Avatar user={data?.user || { fullname: "user" }} /></button>
             <div className="flex relative w-full my-1 min-h-[85vh] border-t border-gray-500/[0.1] overflow-hidden">
                 <div className={`flex flex-col justify-between lg:w-[20%] md:w-[24%] w-[240px] h-[88vh] md:sticky fixed md:top-0 top-[64px] py-4 md:px-8 right-0 bg-white dark:bg-black border border-transparent border-x-gray-500/[0.1] overflow-hidden z-[2] transition-all duration-700 ${open ? "translate-x-[0]": "md:translate-x-[0] translate-x-[130%]"}`}>  
                     <div className="flex flex-col gap-1">
@@ -65,7 +65,7 @@ export default function Layout({
                     </button>
                 </div>
 
-                <div className="flex-1 md:p-8 md:py-8 p-6">
+                <div className="flex-1 md:p-8 md:py-8 p-6 mb-12">
                 {
                     children
                 }

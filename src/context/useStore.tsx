@@ -1,4 +1,5 @@
 'use client'
+import { getAllProducts } from "@/actions/useProducts";
 import { useLocalStorage } from "@/customHooks/useLocaStorage";
 import { gadgets } from "@/data/products";
 import { ICart, IProduct } from "@/interface/store";
@@ -25,7 +26,7 @@ export default function StoreContextProvider({ children }: {children: React.Reac
     const [products, setProducts] = useLocalStorage("products", gadgets)
 
     useEffect(() => {
-
+        getAllProducts()
     }, [])
 
     const addProduct = (data: IProduct) => {
