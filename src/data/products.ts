@@ -2,7 +2,7 @@ export const gadgets = [
     {
       id: "0",
       title: "iPhone 15 Pro Max",
-      price: "1199",
+      price: "1199000",
       slug: "iphone-15-pro-max",
       description: "The iPhone 15 Pro Max features a titanium design, the powerful A17 Pro chip, and a cutting-edge camera system.",
       tags: ["smartphone", "Apple", "iOS", "5G"],
@@ -34,7 +34,7 @@ export const gadgets = [
     {
       id: "1",
       title: "MacBook Pro 16-inch (M2 Max)",
-      price: "3499",
+      price: "3499000",
       slug: "macbook-pro-16-m2-max",
       description: "The MacBook Pro 16-inch with the M2 Max chip offers unparalleled performance for creative professionals.",
       tags: ["laptop", "Apple", "macOS", "Pro"],
@@ -66,7 +66,7 @@ export const gadgets = [
     {
         id: "2",
         title: "Wireless Noise-Cancelling Headphones",
-        price: "299.99",
+        price: "299990",
         slug: "wireless-noise-cancelling-headphones",
         description: "High-quality noise-cancelling headphones with exceptional sound clarity and long battery life.",
         tags: ["audio", "wireless", "noise-cancelling", "Bluetooth"],
@@ -95,7 +95,7 @@ export const gadgets = [
     {
         id: "3",
         title: "Smart Fitness Watch",
-        price: "149.99",
+        price: "149990",
         slug: "smart-fitness-watch",
         description: "Track your health and fitness with this all-in-one smartwatch featuring GPS, heart rate monitoring, and water resistance.",
         tags: ["wearable", "fitness", "smartwatch"],
@@ -123,7 +123,7 @@ export const gadgets = [
     {
         id: "4",
         title: "Portable Bluetooth Speaker",
-        price: "79.99",
+        price: "799900",
         slug: "portable-bluetooth-speaker",
         description: "Compact and durable Bluetooth speaker with deep bass and long battery life for all your outdoor adventures.",
         tags: ["audio", "portable", "Bluetooth"],
@@ -151,7 +151,7 @@ export const gadgets = [
     {
         id: "5",
         title: "4K Action Camera",
-        price: "199.99",
+        price: "1999900",
         slug: "4k-action-camera",
         description: "Capture stunning 4K videos and photos with this waterproof, rugged action camera ideal for adventure enthusiasts.",
         tags: ["camera", "4K", "action", "waterproof"],
@@ -177,7 +177,7 @@ export const gadgets = [
     {
         id: "6",
         title: "Wireless Charging Pad",
-        price: "29.99",
+        price: "299900",
         slug: "wireless-charging-pad",
         description: "Fast wireless charging pad compatible with all Qi-enabled devices for convenient charging.",
         tags: ["charging", "wireless", "Qi"],
@@ -203,7 +203,7 @@ export const gadgets = [
     {
         id: "7",
         title: "Smart Home Hub",
-        price: "129.99",
+        price: "1299900",
         slug: "smart-home-hub",
         description: "Control all your smart home devices from one central hub, compatible with most smart devices and voice assistants.",
         tags: ["smart home", "automation", "hub"],

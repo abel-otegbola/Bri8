@@ -23,18 +23,18 @@ export default function ProductCard({ product }: { product: IProduct }) {
                 
                 <p className="text-[10px] opacity-[0.5] uppercase font-bold px-3 py-0 my-2">{product?.category}</p>
                 <a href={`/product?id=${product.id}`} className="block pb-4 px-3 leading-[130%] text-[12px] uppercase font-semibold">{product?.title}</a>
-                <p className="flex flex-wrap gap-3 justify-between items-center text-[16px] opacity-[0.7] px-3">
-                    {currencyFormatter(+product?.price * 1700)} 
+                <div className="flex flex-wrap gap-3 justify-between items-center text-[16px] opacity-[0.7] px-3">
+                    {currencyFormatter(+product?.price)} 
 
                     <div className="border border-gray-500/[0.1] rounded-full p-2 cursor-pointer z-[2]">
                     {
                         cart.map(item => item.id).indexOf(product.id) === -1 ? 
-                        <ShoppingCartSimple className="text-[20px] text-gray-700/[0.3]" onClick={() => addToCart({id: product.id, quantity: 1, variation: { color: "black", size: "LG" }})} /> 
+                        <ShoppingCartSimple className="text-[20px] text-gray-700/[0.3] dark:text-gray-100" onClick={() => addToCart({id: product.id, quantity: 1, variation: { color: "black", size: "LG" }})} /> 
                         : 
                         <ShoppingCartSimple weight="fill" className="text-[20px] text-primary"  onClick={() => removeFromCart(product.id)} />
                     }
                     </div>
-                </p>
+                </div>
         </div>
     )
 }

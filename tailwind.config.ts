@@ -10,11 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "primary": "#9B7EBD",
+        "primary": "#7e81bd",
         "secondary": "#D4BEE4",
         "tetiary": "#EEEEEE",
-        "dark": "#3D3346",
-        "black": "#161620",
+        "dark": "#333446",
+        "black": "#212A37",
         "blue": "#1e2e47"
       },
       boxShadow: {

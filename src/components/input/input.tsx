@@ -28,7 +28,7 @@ export default function Input({ className, disabled, label, name, value, type, o
                 ${focus ? "border-primary dark:border-gray-500/[0.3] shadow-input-active" : ""}
                 ${className}
             `}>
-                <span className={!focus ? "opacity-[0.4]": "text-primary"}>{ leftIcon }</span>
+                <span className={`${!focus ? "opacity-[0.4]": "text-primary"} ml-2`}>{ leftIcon }</span>
                 <input 
                     className={` p-2 w-full outline-none bg-transparent
                         ${className} 
